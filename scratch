@@ -14,7 +14,7 @@ $('<div class="arrow-holder-clickable">')
     }));
 
 
-css = `.arrow {
+CSS = `.arrow {
     border: 0 solid transparent;
     border-left-color: #D5D4D4;
     border-width: 4px 0 4px 4px;
@@ -57,5 +57,5 @@ body.right-rail-open .arrow {
     overflow: hidden;
 }`
 var css = document.createElement('style');
-css.innerHTML = customBackground;
+css.innerHTML = CSS;
 document.body.appendChild(css);
