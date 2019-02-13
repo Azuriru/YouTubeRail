@@ -7,18 +7,15 @@ $('<div class="arrow-holder-clickable">')
         if ($('body').hasClass('right-rail-open')) {
             $('.right-rail').animate({"width": '+=13%'});
             $('.WikiaPage').animate({"left": '13.8%'});
-            $('.ChatHeader').animate({"left": '+=13%', "width": '85.2%'});
             $('.arrow-holder-clickable').animate({"left": '+=13%'});
         } else {
             $('.right-rail').animate({"width": '-=14%'});
             $('.arrow-holder-clickable').animate({"left": '-=13%'});
             $('.WikiaPage').animate({"left": '10'});
-            $('.ChatHeader').animate({"left": '0'});
-            $('.ChatHeader').css({"width": 'initial'});
         }
     }));
     
-    mw.util.addCSS('@keyframes spinPulse {\
+    CSS = '@keyframes spinPulse {\
         0% {\
             transform: translateY(-50%) rotate(160deg);\
             opacity: 0;\
@@ -84,7 +81,10 @@ $('<div class="arrow-holder-clickable">')
 		transform: translateY(-50%);\
 		right: 0;\
 		left: 0\
-	}');
+	}'
+	var css = document.createElement('style');
+	css.innerHTML = CSS;
+	document.body.appendChild(css);
     
     $('body').append($('<div>', {
         class: 'loading',
@@ -99,9 +99,9 @@ $('<div class="arrow-holder-clickable">')
     }));
     
     setTimeout(function() {
-        chatBorderColor = $('.ChatHeader').css('border-color');
-        chatBGColor = $('.ChatHeader').css('background-color');
-        mw.util.addCSS('.arrow {\
+        chatBorderColor = 'white';
+        chatBGColor = 'turquoise';
+        CSS = '.arrow {\
             border: 0 solid transparent;\
             border-left-color: ' + chatBorderColor + ';\
             border-width: 4px 0 4px 4px;\
@@ -140,12 +140,15 @@ $('<div class="arrow-holder-clickable">')
             overflow: hidden;\
             border-radius: 0px 5px 5px 0px;\
             border-right: 1px solid ' + chatBorderColor + '\
-        }');
+        }'
+	var css = document.createElement('style');
+	css.innerHTML = CSS;
+	document.body.appendChild(css);
         $('.loading').fadeOut();
     }, 5000);
     
 $.getScript("https://www.youtube.com/iframe_api");
-if(wgCanonicalSpecialPageName == 'Chat') {
+
     var rail = $('<section id="_WikiaPage" class="_WikiaPage"></section>');
     var switchrail = $('\
     <table style="width:99%;">\
@@ -402,18 +405,7 @@ if(wgCanonicalSpecialPageName == 'Chat') {
     var userhidden = false;
     var logshidden = false;
     var mwuserhidden = false;
-    
-    //Credit goes to author in Wikipedia
-    function userIsInGroup(group) {
-        if (wgUserGroups) {
-            if ( !group || group.length == 0 ) {
-                group = '*';
-            }
-        for(var i in wgUserGroups)
-            if (wgUserGroups[i]==group) return true;
-        }
-        return false;
-    }
+
     //Thanks to RansomTime, with some modifications
     function exist (variable) {
         if (variable == ""){
@@ -1121,7 +1113,6 @@ if(wgCanonicalSpecialPageName == 'Chat') {
         </div>', {
             width: 800
         });
-}
 
     rail.append(helpbutton);
     rail.append(aboutbutton);
@@ -1141,11 +1132,14 @@ if(wgCanonicalSpecialPageName == 'Chat') {
     videorail.hide();
     murail.hide();
     rail.appendTo($('.right-rail'));
-    mw.util.addCSS('section#_WikiaPage {\
+    CSS = 'section#_WikiaPage {\
     position: absolute;\
     bottom: 0;\
     top: 0;\
-}');
+}' 
+var css = document.createElement('style');
+css.innerHTML = CSS;
+document.body.appendChild(css);
 
 userhidden = !userhidden;
     $('.mainuser').slideToggle(250, function() {
