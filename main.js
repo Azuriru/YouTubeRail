@@ -1,3 +1,4 @@
+// throttle
 (function(window, undefined) {
 	'$:nomunge';
 	var $ = window.jQuery || window.Cowboy || (window.Cowboy = {}),
@@ -44,6 +45,7 @@
 	};
 })(this);
 
+// Actual siderail
 $('<div class="arrow-holder-clickable">').append('<span class="arrow">').appendTo('body').after('<div class="right-rail">').click($.throttle(200, function() {
 	$('body').toggleClass('right-rail-open');
 	if ($('body').hasClass('right-rail-open')) {
