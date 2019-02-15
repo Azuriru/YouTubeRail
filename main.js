@@ -1,4 +1,4 @@
-// throttle
+// Throttle
 (function(window, undefined) {
 	'$:nomunge';
 	var $ = window.jQuery || window.Cowboy || (window.Cowboy = {}),
@@ -45,8 +45,18 @@
 	};
 })(this);
 
+// CSS
+$.ajax({
+	url: 'https://raw.githubusercontent.com/GameModerator/Pokemon-Showdown-SideRail/master/main.css',
+	success: function(data) {
+		$('<style>').appendTo('head').html(data);
+	}
+});
+
 // Actual siderail
-$('<div class="arrow-holder-clickable">').append('<span class="arrow">').appendTo('body').after('<div class="right-rail">').click($.throttle(200, function() {
+$('<div class="arrow-holder-clickable">').append('<span class="arrow">')
+	.appendTo('body').after('<div class="right-rail">')
+	.click($.throttle(200, function() {
 	$('body').toggleClass('right-rail-open');
 	if ($('body').hasClass('right-rail-open')) {
 		$('.right-rail').animate({
@@ -70,76 +80,7 @@ $('<div class="arrow-holder-clickable">').append('<span class="arrow">').appendT
 		});
 	}
 }));
-CSS = '@keyframes spinPulse {\
-        0% {\
-            transform: translateY(-50%) rotate(160deg);\
-            opacity: 0;\
-            box-shadow: 0 0 1px #2187e7\
-        }\
-        50% {\
-            transform: translateY(-50%) rotate(145deg);\
-            opacity: 1;\
-        }\
-        100% {\
-            transform: translateY(-50%) rotate(-320deg);\
-            opacity: 0;\
-        }\
-    }\
-    @keyframes spinoffPulse {\
-        0% {\
-            transform: translateY(-50%) rotate(0deg)\
-        }\
-        100% {\
-            transform: translateY(-50%) rotate(360deg)\
-        }\
-    }\
-    .loading {\
-		position: fixed;\
-		width: 100%;\
-		height: 100%;\
-		z-index: 10000000000;\
-		background: #000;\
-		top: 0;\
-	}\
-	.circle-outer {\
-		width: 50px;\
-		height: 50px;\
-		margin: 0 auto;\
-		background-color: transparent;\
-		border: 5px solid rgba(0, 183, 229, .9);\
-		opacity: .9;\
-		border-right: 5px solid transparent;\
-		border-left: 5px solid transparent;\
-		border-radius: 50px;\
-		box-shadow: 0 0 35px #2187e7;\
-		animation: spinPulse 1s infinite linear;\
-		position: absolute;\
-		top: 50%;\
-		transform: translateY(-50%);\
-		right: 0;\
-		left: 0\
-	}\
-	.circle-inner {\
-		width: 30px;\
-		height: 30px;\
-		margin: 0 auto;\
-		background-color: transparent;\
-		border: 5px solid rgba(0, 183, 229, .9);\
-		opacity: .9;\
-		border-left: 5px solid transparent;\
-		border-right: 5px solid transparent;\
-		border-radius: 30px;\
-		box-shadow: 0 0 15px #2187e7;\
-		animation: spinoffPulse 1s infinite linear;\
-		position: absolute;\
-		top: 50%;\
-		transform: translateY(-50%);\
-		right: 0;\
-		left: 0\
-	}'
-var css = document.createElement('style');
-css.innerHTML = CSS;
-document.body.appendChild(css);
+
 $('body').append($('<div>', {
 	class: 'loading',
 	append: [
@@ -150,52 +91,8 @@ $('body').append($('<div>', {
 		})
 	]
 }));
+
 setTimeout(function() {
-	chatBorderColor = 'white';
-	chatBGColor = 'turquoise';
-	CSS = '.arrow {\
-            border: 0 solid transparent;\
-            border-left-color: ' + chatBorderColor + ';\
-            border-width: 4px 0 4px 4px;\
-            height: 0;\
-            left: 50%;\
-            margin-left: -2px;\
-            margin-top: -4px;\
-            position: absolute;\
-            top: 50%;\
-            width: 0\
-        }\
-        \
-        body.right-rail-open .arrow {\
-            border-width: 4px 4px 4px 0;\
-            border-left-color: transparent;\
-            border-right-color: ' + chatBorderColor + '\
-        }\
-        \
-        .arrow-holder-clickable {\
-            position: absolute;\
-            top: 0;\
-            left: 0;\
-            height: 100%;\
-            width: 10px;\
-            cursor: pointer;\
-        }\
-        \
-        .right-rail {\
-            background-color: ' + chatBGColor + ';\
-            z-index: 99999999;\
-            height: 100%;\
-            position: absolute;\
-            top: 0;\
-            left: 0;\
-            text-align: center;\
-            overflow: hidden;\
-            border-radius: 0px 5px 5px 0px;\
-            border-right: 1px solid ' + chatBorderColor + '\
-        }';
-	var css = document.createElement('style');
-	css.innerHTML = CSS;
-	document.body.appendChild(css);
 	$('.loading').fadeOut();
 }, 5000);
 
@@ -323,14 +220,3 @@ function removevideo() {
 	var removevideo = ' ';
 	window.open(removevideo, "videourl");
 }
-
-CSS = 'section#SideRail {\
-    position: absolute;\
-    bottom: 0;\
-    top: 0;\
-    width: 100%;\
-}';
-
-var css = document.createElement('style');
-css.innerHTML = CSS;
-document.body.appendChild(css);
