@@ -20,11 +20,11 @@
 			function exec() {
 				last_exec = +new Date();
 				callback.apply(that, args);
-			};
+			}
 
 			function clear() {
 				timeout_id = undefined;
-			};
+			}
 			if (debounce_mode && !timeout_id) {
 				exec();
 			}
@@ -34,7 +34,7 @@
 			} else if (no_trailing !== true) {
 				timeout_id = setTimeout(debounce_mode ? clear : exec, debounce_mode === undefined ? delay - elapsed : delay);
 			}
-		};
+		}
 		if ($.guid) {
 			wrapper.guid = callback.guid = callback.guid || $.guid++;
 		}
@@ -204,7 +204,7 @@ function exist(variable) {
 
 function addvideo() {
 	$('#video1').show();
-	var url = $('#video').val();
+	var url = $('#video').val().slice(-11);
 	var open = 'https://www.youtube.com/embed/' + url;
 	var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A';
 	// Online Game Addicts Sprechchor
@@ -217,6 +217,5 @@ function addvideo() {
 
 function removevideo() {
 	$('#video1').hide();
-	var removevideo = ' ';
-	window.open(removevideo, "videourl");
+	window.open('', "videourl");
 }
