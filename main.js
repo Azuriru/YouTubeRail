@@ -45,177 +45,205 @@
 	};
 })(this);
 
-// CSS
 $.ajax({
 	url: 'https://raw.githubusercontent.com/GameModerator/Pokemon-Showdown-SideRail/master/main.css',
 	success: function(data) {
 		$('<style>').appendTo('head').html(data);
 	}
-});
-
-// Actual siderail
-$('<div class="arrow-holder-clickable">').append('<span class="arrow">')
-	.appendTo('body').after('<div class="right-rail">')
-	.click($.throttle(200, function() {
-	$('body').toggleClass('right-rail-open');
-	if ($('body').hasClass('right-rail-open')) {
-		$('.right-rail').animate({
-			"width": '+=400px'
-		});
-		$('.WikiaPage').animate({
-			"left": '13.8%'
-		});
-		$('.arrow-holder-clickable').animate({
-			"left": '+=400px'
-		});
-	} else {
-		$('.right-rail').animate({
-			"width": '-=400px'
-		});
-		$('.arrow-holder-clickable').animate({
-			"left": '-=400px'
-		});
-		$('.WikiaPage').animate({
-			"left": '10'
-		});
-	}
-}));
-
-$('body').append($('<div>', {
-	class: 'loading',
-	append: [
-		$('<div>', {
-			class: 'circle-outer'
-		}), $('<div>', {
-			class: 'circle-inner'
-		})
-	]
-}));
-
-setTimeout(function() {
-	$('.loading').fadeOut();
-}, 5000);
-
-$.getScript("https://www.youtube.com/iframe_api");
-
-$('.right-rail').append($('<div>', {
-        id: 'right-rail-BG',
-        css: {
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            'z-index': '-1'
+}).then(function() {
+    $('<div class="arrow-holder-clickable">').append('<span class="arrow">')
+        .appendTo('body').after('<div class="right-rail">')
+        .click($.throttle(200, function() {
+        $('body').toggleClass('right-rail-open');
+        if ($('body').hasClass('right-rail-open')) {
+            $('.right-rail').animate({
+                "width": '+=400px'
+            });
+            $('.WikiaPage').animate({
+                "left": '13.8%'
+            });
+            $('.arrow-holder-clickable').animate({
+                "left": '+=400px'
+            });
+        } else {
+            $('.right-rail').animate({
+                "width": '-=400px'
+            });
+            $('.arrow-holder-clickable').animate({
+                "left": '-=400px'
+            });
+            $('.WikiaPage').animate({
+                "left": '10'
+            });
         }
-    }),
-    $('<section>', {
-        id: 'SideRail',
-        css: {
-            width: '100%',
-            position: 'absolute',
-            bottom: 0,
-            top: 0,
-        },
+    }));
+    
+    $('body').append($('<div>', {
+        class: 'loading',
         append: [
-            $('<table>', {
-                css: {
-                    'width': '100%'
-                },
-                append: [
-                    $('<tbody>', {
-                        append: [
-                            $('<tr>', {
-                                append: [
-                                    $('<td>', {
-                                        append: [
-                                            $('<input>', {
-                                                css: {
-                                                    'width': '98%'
-                                                },
-                                                id: 'video',
-                                                type: 'text'
-                                            })
-                                        ]
-                                    }),
-                                ]
-                            }),
-                            $('<tr>', {
-                                append: [
-                                    $('<td>', {
-                                        append: [
-                                            $('<button>', {
-                                                css: {
-                                                    'width': '100%'
-                                                },
-                                                id: 'video',
-                                                click: addvideo,
-                                                text: 'Add'
-                                            })
-                                        ]
-                                    }),
-                                ]
-                            }),
-                            $('<tr>', {
-                                append: [
-                                    $('<td>', {
-                                        append: [
-                                            $('<button>', {
-                                                css: {
-                                                    'width': '100%'
-                                                },
-                                                id: 'video',
-                                                click: removevideo,
-                                                text: 'Remove'
-                                            })
-                                        ]
-                                    }),
-                                ]
-                            }),
-                            $('<tr>', {
-                                append: [
-                                    $('<td>', {
-                                        append: [
-                                            $('<hr>'),
-                                            $('<iframe>', {
-                                                width: '100%',
-                                                height: '200',
-                                                name: 'videourl',
-                                                id: 'video1',
-                                                allowfullscreen: 'allowfullscreen',
-                                                frameborder: '0'
-                                            }),
-                                        ]
-                                    }),
-                                ]
-                            }),
-                        ]
-                    })
-                ]
-            }),
+            $('<div>', {
+                class: 'circle-outer'
+            }), $('<div>', {
+                class: 'circle-inner'
+            })
         ]
     }));
-
-//Thanks to RansomTime, with some modifications
-function exist(variable) {
-	if (variable == "") {
-		return false;
-	}
-	return true;
-}
-
-function addvideo() {
-	$('#video1').show();
-	var url = $('#video').val().slice(-11);
-	var open = 'https://www.youtube.com/embed/' + url;
-	var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A';
-	// Online Game Addicts Sprechchor
-	if (exist(url)) {
-		window.open(open, "videourl");
-	} else {
-		window.open(other, "videourl");
-	}
-}
-
-function removevideo() {
-	$('#video1').hide();
-	window.open('', "videourl");
-}
+    
+    setTimeout(function() {
+        $('.loading').fadeOut();
+    }, 5000);
+    
+    $.getScript('https://www.youtube.com/iframe_api');
+    
+    $('.right-rail').append($('<div>', {
+            id: 'right-rail-BG',
+            css: {
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                'z-index': '-1'
+            }
+        }),
+        $('<section>', {
+            id: 'SideRail',
+            css: {
+                width: '100%',
+                position: 'absolute',
+                bottom: 0,
+                top: 0,
+            },
+            append: [
+                $('<table>', {
+                    css: {
+                        'width': '100%'
+                    },
+                    append: [
+                        $('<tbody>', {
+                            append: [
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<input>', {
+                                                    css: {
+                                                        'width': '98%'
+                                                    },
+                                                    id: 'video',
+                                                    type: 'text'
+                                                })
+                                            ]
+                                        }),
+                                    ]
+                                }),
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<button>', {
+                                                    css: {
+                                                        'width': '100%'
+                                                    },
+                                                    id: 'video',
+                                                    click: addvideo,
+                                                    text: 'Add'
+                                                })
+                                            ]
+                                        }),
+                                    ]
+                                }),
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<button>', {
+                                                    css: {
+                                                        'width': '100%'
+                                                    },
+                                                    id: 'video',
+                                                    click: removevideo,
+                                                    text: 'Remove'
+                                                })
+                                            ]
+                                        }),
+                                    ]
+                                }),
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<hr>'),
+                                                $('<iframe>', {
+                                                    width: '100%',
+                                                    height: '200',
+                                                    name: 'videourl',
+                                                    id: 'video1',
+                                                    allowfullscreen: 'allowfullscreen',
+                                                    frameborder: '0'
+                                                }),
+                                            ]
+                                        }),
+                                    ]
+                                }),
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<hr>'),
+                                                $('<input>', {
+                                                    css: {
+                                                        'width': '98%'
+                                                    },
+                                                    id: 'searchquery',
+                                                    type: 'text'
+                                                })
+                                            ]
+                                        }),
+                                    ]
+                                }),
+                                $('<tr>', {
+                                    append: [
+                                        $('<td>', {
+                                            append: [
+                                                $('<hr>'),
+                                                $('<div>', {
+                                                    css: {
+                                                        'width': '100%'
+                                                    },
+                                                    id: 'results',
+                                                })
+                                            ]
+                                        }),
+                                    ]
+                                })
+                            ]
+                        })
+                    ]
+                }),
+            ]
+        }));
+    
+    //Thanks to RansomTime, with some modifications
+    function exist(variable) {
+        if (variable == "") {
+            return false;
+        }
+        return true;
+    }
+    
+    function addvideo() {
+        $('#video1').show();
+        var url = $('#video').val().slice(-11);
+        var open = 'https://www.youtube.com/embed/' + url;
+        var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A'; // Online Game Addicts Sprechchor
+        if (exist(url)) {
+            window.open(open, "videourl");
+        } else {
+            window.open(other, "videourl");
+        }       
+    }
+    
+    function removevideo() {
+        $('#video1').hide();
+        window.open('', "videourl");
+    }
+});
