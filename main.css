@@ -113,3 +113,10 @@ body.right-rail-open .arrow {
     border-radius: 0px 5px 5px 0px;
     border-right: 1px solid white;
 }
+
+section#SideRail {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
