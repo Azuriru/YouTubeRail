@@ -120,3 +120,35 @@ section#SideRail {
     top: 0;
     width: 100%;
 }
+
+#results li {
+    border-bottom: 1px solid #c3faff;
+    display: block;
+    padding: 6px 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s
+}
+
+#results li:hover {
+    background-color: rgba(82,197,186,0.43)
+}
+
+#results li:active {
+    background-color: rgba(82,197,186,0.78)
+}
+
+#results li .fvlist {
+    align-items: center;
+    display: flex
+}
+
+#results li .fvthumb {
+    border-radius: 5px;
+    border: 1px solid #c3faff;
+    display: inline-table;
+    float: left;
+    height: 38px;
+    margin-right: 5px;
+    width: 68px
+}
