@@ -45,35 +45,35 @@
 	};
 })(this);
 
-$.ajax({
-	url: 'https://raw.githubusercontent.com/GameModerator/Pokemon-Showdown-SideRail/master/main.css',
-	success: function(data) {
-		$('<style>').appendTo('head').html(data);
-	}
-}).then(function() {
+    $('head').append($('<link>', {
+       rel: 'stylesheet',
+       type: 'text/css',
+       href: 'https://rawcdn.githack.com/GameModerator/Pokemon-Showdown-SideRail/0d35b7bfaddb8541ee43f52e8061c6d90b62da30/main.css'
+    }));
+    
     $('<div class="arrow-holder-clickable">').append('<span class="arrow">')
         .appendTo('body').after('<div class="right-rail">')
         .click($.throttle(200, function() {
         $('body').toggleClass('right-rail-open');
         if ($('body').hasClass('right-rail-open')) {
             $('.right-rail').animate({
-                "width": '+=400px'
+                'width': '+=400px'
             });
             $('.WikiaPage').animate({
-                "left": '13.8%'
+                'left': '13.8%'
             });
             $('.arrow-holder-clickable').animate({
-                "left": '+=400px'
+                'left': '+=400px'
             });
         } else {
             $('.right-rail').animate({
-                "width": '-=400px'
+                'width': '-=400px'
             });
             $('.arrow-holder-clickable').animate({
-                "left": '-=400px'
+                'left': '-=400px'
             });
             $('.WikiaPage').animate({
-                "left": '10'
+                'left': '10'
             });
         }
     }));
@@ -236,14 +236,89 @@ $.ajax({
         var open = 'https://www.youtube.com/embed/' + url;
         var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A'; // Online Game Addicts Sprechchor
         if (exist(url)) {
-            window.open(open, "videourl");
+            window.open(open, 'videourl');
         } else {
-            window.open(other, "videourl");
+            window.open(other, 'videourl');
         }       
     }
     
     function removevideo() {
         $('#video1').hide();
-        window.open('', "videourl");
+        window.open('', 'videourl');
     }
-});
+
+    $('#searchquery').keydown(function () {
+        $.getScript('https://www.youtube.com/iframe_api');
+        $('#results').empty();
+        var q = $('#searchquery').val().trim();
+        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAGTv1Vk5B4qFgQcxCdG2XEG0zmduHq9wY';
+        url = url + '&type=video';
+        url = url + '&max-results=2';
+        url = url + '&q=' + q;
+
+        fetch(url, {
+            method: 'GET',
+        }).then(e => e.json()).then(arr => arr.items.map(video => ({
+            id: video.id.videoId,
+            title: video.snippet.title,
+            description: video.snippet.description,
+            thumbnail: video.snippet.thumbnails.high.url
+        })).forEach(function(video) {
+            $('#results').append($('<li>', {
+                append: $('<div>', {
+                    class: 'result-list',
+                    append: [
+                        $('<div>', {
+                            class: 'result-img',
+                            css: {
+                                background: 'url(' + video.thumbnail + ') center center / cover'
+                            }
+                        }),
+                        $('<div>', {
+                            text: video.title,
+                            css: {
+                                width: '60%'
+                            }
+                        })
+                    ]
+                }).click(function() {
+                    window.open('https://www.youtube.com/embed/' + video.id, 'videourl');
+                })
+            }));
+        }));
+    });
+    
+    CSS = `#results li {
+    border-bottom: 1px solid #c3faff;
+    display: block;
+    padding: 6px 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s
+}
+
+#results li:hover {
+    background-color: rgba(82,197,186,0.43)
+}
+
+#results li:active {
+    background-color: rgba(82,197,186,0.78)
+}
+
+#results li .result-list {
+    align-items: center;
+    display: flex
+}
+
+#results li .result-img {
+    border-radius: 5px;
+    border: 1px solid #c3faff;
+    display: inline-table;
+    float: left;
+    margin-right: 5px;
+    width: 150px;
+    height: 80px;
+}`
+var css = document.createElement('style');
+css.innerHTML = CSS;
+document.body.appendChild(css);
