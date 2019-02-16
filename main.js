@@ -102,7 +102,6 @@
                 height: '100%',
                 position: 'absolute',
                 'z-index': '-1',
-                'overflow-y': 'auto'
             }
         }),
         $('<section>', {
@@ -112,6 +111,7 @@
                 position: 'absolute',
                 bottom: 0,
                 top: 0,
+                'overflow-y': 'auto'
             },
             append: [
                 $('<table>', {
@@ -127,7 +127,7 @@
                                             append: [
                                                 $('<input>', {
                                                     css: {
-                                                        'width': '98%'
+                                                        'width': '99%'
                                                     },
                                                     id: 'video',
                                                     type: 'text'
@@ -192,7 +192,7 @@
                                                 $('<hr>'),
                                                 $('<input>', {
                                                     css: {
-                                                        'width': '98%'
+                                                        'width': '99%'
                                                     },
                                                     id: 'searchquery',
                                                     type: 'text'
@@ -288,38 +288,3 @@
             }));
         }));
     });
-    
-    CSS = `#results li {
-    border-bottom: 1px solid #c3faff;
-    display: block;
-    padding: 6px 8px;
-    text-align: center;
-    text-decoration: none;
-    transition: 0.5s
-}
-
-#results li:hover {
-    background-color: rgba(82,197,186,0.43)
-}
-
-#results li:active {
-    background-color: rgba(82,197,186,0.78)
-}
-
-#results li .result-list {
-    align-items: center;
-    display: flex
-}
-
-#results li .result-img {
-    border-radius: 5px;
-    border: 1px solid #c3faff;
-    display: inline-table;
-    float: left;
-    margin-right: 5px;
-    width: 150px;
-    height: 80px;
-}`
-var css = document.createElement('style');
-css.innerHTML = CSS;
-document.body.appendChild(css);
