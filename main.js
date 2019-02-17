@@ -219,8 +219,8 @@
     function addvideo() {
         $('#video1').show();
         var url = $('#video').val().slice(-11);
-        var open = 'https://www.youtube.com/embed/' + url;
-        var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A'; // Online Game Addicts Sprechchor
+        var open = 'https://www.youtube.com/embed/' + url + '?autoplay=1';
+        var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A?autoplay=1'; // Online Game Addicts Sprechchor
         if (exist(url)) {
             window.open(open, 'videourl');
         } else {
@@ -271,7 +271,7 @@
                         })
                     ]
                 }).click(function() {
-                    window.open('https://www.youtube.com/embed/' + video.id, 'videourl');
+                    window.open('https://www.youtube.com/embed/' + video.id + '?autoplay=1', 'videourl');
                 })
             }));
         })).catch(function(err) {
