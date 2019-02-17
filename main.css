@@ -148,6 +148,11 @@
     height: 80px;
 }
 
+#results .error {
+    align-items: center;
+    display: flex
+}
+
 section#SideRail {
     position: absolute;
     bottom: 0;
