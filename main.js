@@ -48,7 +48,7 @@
     $('head').append($('<link>', {
        rel: 'stylesheet',
        type: 'text/css',
-       href: 'https://rawcdn.githack.com/GameModerator/Pokemon-Showdown-SideRail/0d35b7bfaddb8541ee43f52e8061c6d90b62da30/main.css'
+       href: 'https://raw.githack.com/GameModerator/YoutubeSideRail/master/main.css'
     }));
     
     $('<div class="arrow-holder-clickable">').append('<span class="arrow">')
