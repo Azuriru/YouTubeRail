@@ -59,9 +59,6 @@
             $('.right-rail').animate({
                 'width': '+=400px'
             });
-            $('.WikiaPage').animate({
-                'left': '13.8%'
-            });
             $('.arrow-holder-clickable').animate({
                 'left': '+=400px'
             });
@@ -71,9 +68,6 @@
             });
             $('.arrow-holder-clickable').animate({
                 'left': '-=400px'
-            });
-            $('.WikiaPage').animate({
-                'left': '10'
             });
         }
     }));
@@ -146,23 +140,7 @@
                                                     },
                                                     id: 'video',
                                                     click: addvideo,
-                                                    text: 'Add'
-                                                })
-                                            ]
-                                        }),
-                                    ]
-                                }),
-                                $('<tr>', {
-                                    append: [
-                                        $('<td>', {
-                                            append: [
-                                                $('<button>', {
-                                                    css: {
-                                                        'width': '100%'
-                                                    },
-                                                    id: 'video',
-                                                    click: removevideo,
-                                                    text: 'Remove'
+                                                    text: 'Play'
                                                 })
                                             ]
                                         }),
@@ -192,10 +170,19 @@
                                                 $('<hr>'),
                                                 $('<input>', {
                                                     css: {
-                                                        'width': '99%'
+                                                        'width': '80%',
+                                                        'margin-right': '5px'
                                                     },
                                                     id: 'searchquery',
                                                     type: 'text'
+                                                }),
+                                                $('<button>', {
+                                                    css: {
+                                                        'width': '17%'
+                                                    },
+                                                    id: 'searchbutton',
+                                                    text: 'Search',
+                                                    click: search
                                                 })
                                             ]
                                         }),
@@ -242,14 +229,15 @@
             window.open(other, 'videourl');
         }       
     }
-    
-    function removevideo() {
-        $('#video1').hide();
-        window.open('', 'videourl');
-    }
 
-    $('#searchquery').keydown(function () {
-        $.getScript('https://www.youtube.com/iframe_api');
+    $('#searchquery').keydown(function(e) {
+        var keyCode = e.keyCode;
+        if (keyCode === 13)  {
+            search();
+        }
+    });
+    
+    function search() {
         $('#results').empty();
         var q = $('#searchquery').val().trim();
         var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAGTv1Vk5B4qFgQcxCdG2XEG0zmduHq9wY';
@@ -287,4 +275,4 @@
                 })
             }));
         }));
-    });
+    }
