@@ -48,7 +48,7 @@
     $('head').append($('<link>', {
        rel: 'stylesheet',
        type: 'text/css',
-       href: 'https://raw.githack.com/GameModerator/YoutubeSideRail/master/main.css'
+       href: 'https://raw.githack.com/GameModerator/YouTubeRail/master/main.css'
     }));
     
     $('<div class="arrow-holder-clickable">').append('<span class="arrow">')
