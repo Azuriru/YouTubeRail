@@ -87,8 +87,6 @@
         $('.loading').fadeOut();
     }, 5000);
     
-    $.getScript('https://www.youtube.com/iframe_api');
-    
     $('.right-rail').append($('<div>', {
             id: 'right-rail-BG',
             css: {
@@ -240,7 +238,9 @@
     function search() {
         $('#results').empty();
         var q = $('#searchquery').val().trim();
-        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAGTv1Vk5B4qFgQcxCdG2XEG0zmduHq9wY';
+        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet';
+        var key = 'AIzaSyAGTv1Vk5B4qFgQcxCdG2XEG0zmduHq9wY';
+        url = url + '&key=' + key;
         url = url + '&type=video';
         url = url + '&max-results=2';
         url = url + '&q=' + q;
@@ -274,5 +274,29 @@
                     window.open('https://www.youtube.com/embed/' + video.id, 'videourl');
                 })
             }));
-        }));
+        })).catch(function(err) {
+            $('#results').append($('<li>', {
+                append: $('<div>', {
+                    class: 'error',
+                    append: [
+                        $('<div>', {
+                            css: {
+                                width: '100%'
+                            },
+                            text: 'Error...',
+                            append: [
+                                $('<br>'),
+                                $('<span>', {
+                                    css: {
+                                        'font-size': '12px'
+                                    },
+                                    text: err
+                                })
+                            ]
+                        })
+                    ]
+                })
+            }));
+        });
+        $('#searchquery').val('');
     }
