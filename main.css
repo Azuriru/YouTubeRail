@@ -93,7 +93,7 @@
 }
 
 .arrow-holder-clickable {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -106,7 +106,7 @@
     background-color: #e1e8e8;
     z-index: 99999999;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     text-align: center;
