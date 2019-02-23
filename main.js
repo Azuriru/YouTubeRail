@@ -147,7 +147,8 @@ $('head').append($('<link>', {
 													name: 'videourl',
 													id: 'video1',
 													allowfullscreen: 'allowfullscreen',
-													frameborder: '0'
+													frameborder: '0',
+													allow: 'autoplay'
 												}),
 											]
 										}),
