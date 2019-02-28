@@ -254,7 +254,7 @@ $('head').append($('<link>', {
 								}
 							}),
 							$('<div>', {
-								text: video.title,
+								html: video.title,
 								css: {
 									width: '60%'
 								}
