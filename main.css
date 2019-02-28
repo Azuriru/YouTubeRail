@@ -148,6 +148,10 @@
     height: 80px;
 }
 
+#results .result-list div:nth-child(2) {
+    word-break: break-word;
+}
+
 #results .error {
     align-items: center;
     display: flex
