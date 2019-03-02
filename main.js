@@ -1,3 +1,9 @@
+// Because someone told me that people could actually abuse this (but why?), so you'll have to use your own.
+// Don't know how to get one? You probably shouldn't be using this either.
+// Kidding, follow the carefully written instructions here:
+// https://developers.google.com/youtube/v3/getting-started#before-you-start
+window.APIKey = '';
+
 // Throttle
 (function(window, undefined) {
 	'$:nomunge';
@@ -230,7 +236,7 @@ $('head').append($('<link>', {
 			$('#results').empty();
 			var q = $('#searchquery').val().trim();
 			var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet';
-			var key = 'AIzaSyAGTv1Vk5B4qFgQcxCdG2XEG0zmduHq9wY';
+			var key = window.APIKey;
 			url = url + '&key=' + key;
 			url = url + '&type=video';
 			url = url + '&max-results=2';
