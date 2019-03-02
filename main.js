@@ -2,7 +2,8 @@
 // Don't know how to get one? You probably shouldn't be using this either.
 // Kidding, follow the carefully written instructions here:
 // https://developers.google.com/youtube/v3/getting-started#before-you-start
-window.APIKey = '';
+// Then console this:
+// localStorage.setItem('APIKey', 'Your API key here');
 
 // Throttle
 (function(window, undefined) {
@@ -236,7 +237,7 @@ $('head').append($('<link>', {
 			$('#results').empty();
 			var q = $('#searchquery').val().trim();
 			var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet';
-			var key = window.APIKey;
+			var key = localStorage.getItem('APIKey');
 			url = url + '&key=' + key;
 			url = url + '&type=video';
 			url = url + '&max-results=2';
