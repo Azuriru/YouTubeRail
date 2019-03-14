@@ -74,19 +74,6 @@ $('head').append($('<link>', {
 				});
 			}
 		}));
-		$('body').append($('<div>', {
-			class: 'loading',
-			append: [
-				$('<div>', {
-					class: 'circle-outer'
-				}), $('<div>', {
-					class: 'circle-inner'
-				})
-			]
-		}));
-		setTimeout(function() {
-			$('.loading').fadeOut();
-		}, 5000);
 		$('.right-rail').append($('<div>', {
 			id: 'right-rail-BG',
 			css: {
