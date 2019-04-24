@@ -134,6 +134,30 @@ $('head').append($('<link>', {
 									append: [
 										$('<td>', {
 											append: [
+												$('<input>', {
+													css: {
+														'width': '80%',
+														'margin-right': '5px'
+													},
+													id: 'copyvideourl',
+													type: 'text'
+												}),
+												$('<button>', {
+													css: {
+														'width': '17%'
+													},
+													id: 'copybutton',
+													text: 'Copy',
+													click: copy
+												})
+											]
+										}),
+									]
+								}),
+								$('<tr>', {
+									append: [
+										$('<td>', {
+											append: [
 												$('<hr>'),
 												$('<iframe>', {
 													width: '100%',
@@ -209,8 +233,10 @@ $('head').append($('<link>', {
 			var other = 'https://www.youtube.com/embed/Yq0zBXN1o2A?autoplay=1'; // Online Game Addicts Sprechchor
 			if (exist(url)) {
 				window.open(open, 'videourl');
+				$('#copyvideourl').val('https://youtu.be/' + url);
 			} else {
 				window.open(other, 'videourl');
+				$('#copyvideourl').val('https://youtu.be/Yq0zBXN1o2A');
 			}
 		}
 		$('#searchquery').keydown(function(e) {
@@ -256,6 +282,7 @@ $('head').append($('<link>', {
 						]
 					}).click(function() {
 						window.open('https://www.youtube.com/embed/' + video.id + '?autoplay=1', 'videourl');
+						$('#copyvideourl').val('https://youtu.be/' + video.id);
 					})
 				}));
 			})).catch(function(err) {
@@ -283,6 +310,12 @@ $('head').append($('<link>', {
 				}));
 			});
 			$('#searchquery').val('');
+		}
+
+		function copy() {
+  			var videoURL = $('#copyvideourl');
+  			videoURL.select();
+  			document.execCommand('copy');
 		}
 	}
 }));
