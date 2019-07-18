@@ -60,17 +60,17 @@ $('head').append($('<link>', {
 			$('body').toggleClass('right-rail-open');
 			if ($('body').hasClass('right-rail-open')) {
 				$('.right-rail').animate({
-					'width': '+=400px'
+					'left': '0'
 				});
 				$('.arrow-holder-clickable').animate({
-					'left': '+=400px'
+					'left': '400px'
 				});
 			} else {
 				$('.right-rail').animate({
-					'width': '-=400px'
+					'left': '-400px'
 				});
 				$('.arrow-holder-clickable').animate({
-					'left': '-=400px'
+					'left': '0'
 				});
 			}
 		}));
