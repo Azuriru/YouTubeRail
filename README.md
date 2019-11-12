@@ -6,6 +6,15 @@ Plays YouTube videos on a side rail.
   <img alt="YouTubeRail" src="https://i.gyazo.com/1d7f7ac5722cc06e24aaedf7a93f7f56.gif">
 </p>
 
+## FAQ
+### It's throwing 'map' undefined
+Follow the carefully written instructions here:
+https://developers.google.com/youtube/v3/getting-started#before-you-start
+Then console this:
+``localStorage.setItem('APIKey', 'Your API key here');``
+
+To open up console, right click and open 'Inspect Element'. Then on the Inspector tabs, click Console and paste it in. Press enter.
+
 ## Installation
 * Download [Tampermonkey](https://tampermonkey.net/)
 * Click "Create a new script..." on the Extension
