@@ -9,8 +9,9 @@ Plays YouTube videos on a side rail.
 ## FAQ
 ### It's throwing 'map' undefined
 Follow the carefully written instructions here:
-https://developers.google.com/youtube/v3/getting-started#before-you-start
+https://developers.google.com/youtube/v3/getting-started#before-you-start  
 Then console this:
+
 ``localStorage.setItem('APIKey', 'Your API key here');``
 
 To open up console, right click and open 'Inspect Element'. Then on the Inspector tabs, click Console and paste it in. Press enter.
