@@ -16,6 +16,11 @@ Then console this:
 
 To open up console, right click and open 'Inspect Element'. Then on the Inspector tabs, click Console and paste it in. Press enter.
 
+### I'm lazy to do that lmao
+Then use this instead, but if it throws an error still that means it's reached its quota for the day. Making your own could solve this problem permanently. :P
+
+``localStorage.setItem('APIKey', 'AIzaSyBl5oaDMF5_gqiS0EIG2MhheAGIxJtQowo');``
+
 ## Installation
 * Download [Tampermonkey](https://tampermonkey.net/)
 * Click "Create a new script..." on the Extension
